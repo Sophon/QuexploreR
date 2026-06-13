@@ -21,7 +21,7 @@ internal class DecodeQrDataUseCase {
 
 
     /**
-     * WIFI:T:WPA;S:MyNetwork;P:hunter2;H:false;;
+     * `WIFI:T:WPA;S:MyNetwork;P:hunter2;H:false;;`
      */
     private fun String.parseWifi(): Qr.Wifi {
         val fields = this
