@@ -1,4 +1,4 @@
-package io.github.sophon.quexplorer.core.ui
+package io.github.sophon.quexplorer.navigation.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,7 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import io.github.sophon.quexplorer.navigation.Destination
+import io.github.sophon.quexplorer.navigation.model.Destination
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import quexplorer.shared.generated.resources.Res

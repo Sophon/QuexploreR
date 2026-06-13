@@ -1,4 +1,4 @@
-package io.github.sophon.quexplorer.navigation
+package io.github.sophon.quexplorer.navigation.model
 
 import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
