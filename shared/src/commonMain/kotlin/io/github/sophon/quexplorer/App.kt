@@ -27,6 +27,7 @@ import androidx.navigation3.ui.NavDisplay
 import androidx.savedstate.serialization.SavedStateConfiguration
 import io.github.sophon.quexplorer.navigation.ui.BottomBar
 import io.github.sophon.quexplorer.core.ui.PlaceholderScreen
+import io.github.sophon.quexplorer.feat.scanner.ui.ScannerScreen
 import io.github.sophon.quexplorer.navigation.model.Destination
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
@@ -96,7 +97,7 @@ private fun AppNavDisplay(
             }
 
             entry<Destination.Scanner> {
-                PlaceholderScreen(label = "Scanner")
+                ScannerScreen()
             }
         }
     )
