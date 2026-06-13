@@ -11,4 +11,9 @@ internal class ScannerVM(): ViewModel() {
     init {
         //TODO:
     }
+
+
+    fun onDetectQr(data: String) {
+        //TODO
+    }
 }
