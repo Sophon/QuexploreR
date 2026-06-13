@@ -43,6 +43,7 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(libs.composePreviewMultiplatform)
+            implementation(compose.materialIconsExtended)
 
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlin.date.time)

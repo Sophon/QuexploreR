@@ -35,6 +35,7 @@ jetbrains-navigation3-ui = { module = "org.jetbrains.androidx.navigation3:naviga
 jetbrains-lifecycle-viewmodelNavigation3 = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "androidx-lifecycle" }
 
 # Compose
+compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "composeMultiplatform" }
 composePreviewMultiplatform = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "composeMultiplatform" }
 compose-uiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose-android" }
 compose-uiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose-android" }
