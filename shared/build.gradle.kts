@@ -43,22 +43,32 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(libs.composePreviewMultiplatform)
+
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlin.date.time)
+
             implementation(libs.kotlinx.coroutines.core)
+
             implementation(libs.jetbrains.navigation3.ui)
             implementation(libs.jetbrains.lifecycle.viewmodelNavigation3)
+
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+
             implementation(libs.datastore)
+
             implementation(libs.napier)
+
+            api(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
         }
 
         androidMain.dependencies {
             implementation(libs.androidx.camera.camera2)
-            implementation(libs.androidx.camera.lifecycle)
-            implementation(libs.androidx.camera.view)
             implementation(libs.zxing.core)
+
+            implementation(libs.koin.android)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
