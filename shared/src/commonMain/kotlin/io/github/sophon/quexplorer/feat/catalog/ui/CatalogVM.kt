@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 internal class CatalogVM(): ViewModel() {
-    private val _state = MutableStateFlow(CatalogState())
+    private val _state = MutableStateFlow(CatalogState.PREVIEW)
     val state = _state.asStateFlow()
 
     init {

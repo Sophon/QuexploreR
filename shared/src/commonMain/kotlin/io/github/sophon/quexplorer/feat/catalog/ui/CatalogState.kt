@@ -6,6 +6,7 @@ import io.github.sophon.quexplorer.feat.qr.model.QrEntry
 internal data class CatalogState(
     val qrEntryList: List<QrEntry> = emptyList(),
 ) {
+
     companion object {
         val PREVIEW = CatalogState(
             qrEntryList = listOf(
