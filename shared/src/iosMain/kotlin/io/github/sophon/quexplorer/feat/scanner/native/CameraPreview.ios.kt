@@ -8,6 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.interop.UIKitView
 import kotlinx.cinterop.BetaInteropApi
 import kotlinx.cinterop.ExperimentalForeignApi
+import kotlinx.cinterop.readValue
 import platform.AVFoundation.AVCaptureConnection
 import platform.AVFoundation.AVCaptureDevice
 import platform.AVFoundation.AVCaptureDeviceInput
@@ -20,6 +21,7 @@ import platform.AVFoundation.AVLayerVideoGravityResizeAspectFill
 import platform.AVFoundation.AVMediaTypeVideo
 import platform.AVFoundation.AVMetadataMachineReadableCodeObject
 import platform.AVFoundation.AVMetadataObjectTypeQRCode
+import platform.CoreGraphics.CGRectZero
 import platform.QuartzCore.CATransaction
 import platform.QuartzCore.kCATransactionDisableActions
 import platform.UIKit.UIView
@@ -39,13 +41,10 @@ internal actual fun CameraPreview(
     val previewLayer = remember { AVCaptureVideoPreviewLayer(session = session) }
     val delegate = remember { QrMetadataDelegate(onDetectQr) }
 
-    // Keep the delegate's callback fresh across recompositions without
-    // recreating the NSObject subclass.
     SideEffect {
         delegate.onDetect = onDetectQr
     }
 
-    // Configure + start the session on a background queue; startRunning() blocks.
     DisposableEffect(Unit) {
         val queue = dispatch_get_global_queue(QOS_CLASS_USER_INITIATED.toLong(), 0UL)
         dispatch_async(queue) {
@@ -62,18 +61,7 @@ internal actual fun CameraPreview(
     UIKitView(
         modifier = modifier,
         factory = {
-            val container = UIView()
-            previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-            container.layer.addSublayer(previewLayer)
-            return@UIKitView container
-        },
-        onResize = { _, rect ->
-            // The preview layer doesn't track its host view's bounds. Disable
-            // implicit animations so it resizes instantly on rotation/layout.
-            CATransaction.begin()
-            CATransaction.setValue(true, kCATransactionDisableActions)
-            previewLayer.setFrame(rect)
-            CATransaction.commit()
+            return@UIKitView CameraPreviewView(previewLayer)
         },
     )
 }
@@ -127,5 +115,24 @@ private class QrMetadataDelegate(
         val code = didOutputMetadataObjects.firstOrNull() as? AVMetadataMachineReadableCodeObject ?: return
         val value = code.stringValue ?: return
         onDetect(value)
+    }
+}
+
+@OptIn(ExperimentalForeignApi::class)
+private class CameraPreviewView(
+    private val previewLayer: AVCaptureVideoPreviewLayer,
+) : UIView(frame = CGRectZero.readValue()) {
+
+    init {
+        previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        layer.addSublayer(previewLayer)
+    }
+
+    override fun layoutSubviews() {
+        super.layoutSubviews()
+        CATransaction.begin()
+        CATransaction.setValue(true, kCATransactionDisableActions)
+        previewLayer.setFrame(bounds)
+        CATransaction.commit()
     }
 }
