@@ -1,6 +1,7 @@
 package io.github.sophon.quexplorer.feat
 
 import io.github.sophon.quexplorer.feat.catalog.ui.CatalogVM
+import io.github.sophon.quexplorer.feat.catalog.usecase.SubscribeToQrEntriesUseCase
 import io.github.sophon.quexplorer.feat.qr.QrParser
 import io.github.sophon.quexplorer.feat.qr.data.MemoryQrDatabase
 import io.github.sophon.quexplorer.feat.qr.QrDatabase
@@ -27,5 +28,6 @@ internal fun featureModule() = module {
 
     //region CATALOG
     viewModelOf(::CatalogVM)
+    singleOf(::SubscribeToQrEntriesUseCase)
     //endregion
 }
