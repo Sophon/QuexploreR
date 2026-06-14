@@ -5,7 +5,6 @@ sealed interface DataError: Error {
     enum class Local: DataError {
         UNKNOWN,
         DISK_FULL,
-        INSUFFICIENT_FUNDS
     }
 
     enum class Remote: DataError {

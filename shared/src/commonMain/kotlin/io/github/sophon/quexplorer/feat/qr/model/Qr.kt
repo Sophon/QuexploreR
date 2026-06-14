@@ -1,4 +1,4 @@
-package io.github.sophon.quexplorer.core.model
+package io.github.sophon.quexplorer.feat.qr.model
 
 internal sealed class Qr {
     abstract val rawData: String

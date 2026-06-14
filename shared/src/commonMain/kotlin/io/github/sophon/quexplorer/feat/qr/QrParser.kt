@@ -1,9 +1,9 @@
-package io.github.sophon.quexplorer.core.usecase
+package io.github.sophon.quexplorer.feat.qr
 
-import io.github.sophon.quexplorer.core.model.Qr
+import io.github.sophon.quexplorer.feat.qr.model.Qr
 
-internal class DecodeQrDataUseCase {
-    fun invoke(rawData: String): Qr {
+internal class QrParser {
+    fun parse(rawData: String): Qr {
         val result = when {
             rawData.startsWith("http://")
                     || rawData.startsWith("https://") -> Qr.Url(rawData = rawData, url = rawData)

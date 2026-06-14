@@ -30,7 +30,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import io.github.sophon.quexplorer.core.model.Qr
+import io.github.sophon.quexplorer.feat.qr.model.Qr
 import io.github.sophon.quexplorer.feat.scanner.native.CameraPermission
 import io.github.sophon.quexplorer.feat.scanner.native.CameraPreview
 import io.github.sophon.quexplorer.feat.scanner.native.rememberCameraPermission
