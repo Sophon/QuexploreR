@@ -1,12 +1,12 @@
-package io.github.sophon.quexplorer.core.usecase
+package io.github.sophon.quexplorer.feat.qr
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
-import io.github.sophon.quexplorer.core.model.Qr
+import io.github.sophon.quexplorer.feat.qr.model.Qr
 import kotlin.test.Test
 
-internal class DecodeQrDataUseCaseTest {
-    private val usecase = DecodeQrDataUseCase()
+internal class QrParserTest {
+    private val usecase = QrParser()
 
     //region WIFI
     @Test
@@ -22,7 +22,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -41,7 +41,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -60,7 +60,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -79,7 +79,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -98,7 +98,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -117,7 +117,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -136,7 +136,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -155,7 +155,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -170,7 +170,7 @@ internal class DecodeQrDataUseCaseTest {
         val expected = Qr.Url(rawData = rawData, url = rawData)
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -183,7 +183,7 @@ internal class DecodeQrDataUseCaseTest {
         val expected = Qr.Url(rawData = rawData, url = rawData)
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -196,7 +196,7 @@ internal class DecodeQrDataUseCaseTest {
         val expected = Qr.Text(rawData = rawData)
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -211,7 +211,7 @@ internal class DecodeQrDataUseCaseTest {
         val expected = Qr.Text(rawData = rawData)
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -224,7 +224,7 @@ internal class DecodeQrDataUseCaseTest {
         val expected = Qr.Text(rawData = rawData)
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -237,7 +237,7 @@ internal class DecodeQrDataUseCaseTest {
         val expected = Qr.Text(rawData = rawData)
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -250,7 +250,7 @@ internal class DecodeQrDataUseCaseTest {
         val expected = Qr.Text(rawData = rawData)
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -270,7 +270,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -288,7 +288,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -306,7 +306,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -324,7 +324,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -342,7 +342,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -360,7 +360,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -375,7 +375,7 @@ internal class DecodeQrDataUseCaseTest {
         val expected = Qr.Phone(rawData = rawData, number = "+420123456789")
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -388,7 +388,7 @@ internal class DecodeQrDataUseCaseTest {
         val expected = Qr.Phone(rawData = rawData, number = "5550100")
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -401,7 +401,7 @@ internal class DecodeQrDataUseCaseTest {
         val expected = Qr.Phone(rawData = rawData, number = "+18005550199")
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -414,7 +414,7 @@ internal class DecodeQrDataUseCaseTest {
         val expected = Qr.Phone(rawData = rawData, number = "+18005550199")
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -434,7 +434,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -452,7 +452,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -470,7 +470,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -488,7 +488,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -506,7 +506,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -527,7 +527,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -546,7 +546,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -565,7 +565,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -584,7 +584,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -603,7 +603,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -633,7 +633,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -658,7 +658,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -682,7 +682,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -707,7 +707,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -733,7 +733,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
@@ -758,7 +758,7 @@ internal class DecodeQrDataUseCaseTest {
         )
 
         // when
-        val result = usecase.invoke(rawData)
+        val result = usecase.parse(rawData)
 
         //then
         assertThat(result).isEqualTo(expected)
