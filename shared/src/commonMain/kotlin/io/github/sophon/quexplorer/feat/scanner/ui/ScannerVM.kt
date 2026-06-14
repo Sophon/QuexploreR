@@ -1,7 +1,7 @@
 package io.github.sophon.quexplorer.feat.scanner.ui
 
 import androidx.lifecycle.ViewModel
-import io.github.sophon.quexplorer.feat.scanner.usecase.DecodeQrDataUseCase
+import io.github.sophon.quexplorer.core.usecase.DecodeQrDataUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
