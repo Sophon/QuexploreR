@@ -2,7 +2,7 @@ package io.github.sophon.quexplorer.feat
 
 import io.github.sophon.quexplorer.feat.qr.QrParser
 import io.github.sophon.quexplorer.feat.qr.data.MemoryQrDatabase
-import io.github.sophon.quexplorer.feat.qr.data.QrDatabase
+import io.github.sophon.quexplorer.feat.qr.QrDatabase
 import io.github.sophon.quexplorer.feat.scanner.ui.ScannerVM
 import io.github.sophon.quexplorer.feat.scanner.usecase.CacheQrUseCase
 import io.github.sophon.quexplorer.feat.scanner.usecase.DecodeQrUseCase

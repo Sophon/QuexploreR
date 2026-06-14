@@ -2,7 +2,7 @@ package io.github.sophon.quexplorer.feat.scanner.usecase
 
 import io.github.sophon.quexplorer.core.arch.DataError
 import io.github.sophon.quexplorer.core.arch.EmptyResult
-import io.github.sophon.quexplorer.feat.qr.data.QrDatabase
+import io.github.sophon.quexplorer.feat.qr.QrDatabase
 import io.github.sophon.quexplorer.feat.qr.model.Qr
 import io.github.sophon.quexplorer.feat.qr.model.QrEntry
 import kotlin.time.Clock

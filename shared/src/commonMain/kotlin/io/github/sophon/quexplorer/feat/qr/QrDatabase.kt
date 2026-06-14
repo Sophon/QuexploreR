@@ -1,4 +1,4 @@
-package io.github.sophon.quexplorer.feat.qr.data
+package io.github.sophon.quexplorer.feat.qr
 
 import io.github.sophon.quexplorer.core.arch.DataError
 import io.github.sophon.quexplorer.core.arch.EmptyResult

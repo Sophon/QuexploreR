@@ -3,12 +3,14 @@ package io.github.sophon.quexplorer.feat.qr.data
 import io.github.sophon.quexplorer.core.arch.DataError
 import io.github.sophon.quexplorer.core.arch.EmptyResult
 import io.github.sophon.quexplorer.core.arch.Result
+import io.github.sophon.quexplorer.feat.qr.QrDatabase
 import io.github.sophon.quexplorer.feat.qr.model.QrEntry
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 
+// temporary in-memory DB until we implement proper SQL database
 internal class MemoryQrDatabase : QrDatabase {
     private val state = MutableStateFlow<Map<String, QrEntry>>(emptyMap())
 
