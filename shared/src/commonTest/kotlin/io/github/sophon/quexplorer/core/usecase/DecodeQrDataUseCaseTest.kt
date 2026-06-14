@@ -1,4 +1,4 @@
-package io.github.sophon.quexplorer.feat.scanner.usecase
+package io.github.sophon.quexplorer.core.usecase
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo

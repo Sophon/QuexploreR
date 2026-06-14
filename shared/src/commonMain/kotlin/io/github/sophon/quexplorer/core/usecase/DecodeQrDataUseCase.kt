@@ -1,4 +1,4 @@
-package io.github.sophon.quexplorer.feat.scanner.usecase
+package io.github.sophon.quexplorer.core.usecase
 
 import io.github.sophon.quexplorer.core.model.Qr
 
