@@ -5,7 +5,13 @@ import io.github.sophon.quexplorer.feat.qr.model.QrEntry
 
 internal data class CatalogState(
     val qrEntryList: List<QrEntry> = emptyList(),
+
+    val deleteConfirmationDialog: DeleteConfirmationDialog? = null,
 ) {
+    data class DeleteConfirmationDialog(
+        val id: String,
+    )
+
 
     companion object {
         val PREVIEW = CatalogState(

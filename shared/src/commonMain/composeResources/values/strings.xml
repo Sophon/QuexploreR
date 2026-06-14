@@ -1,6 +1,11 @@
 <!--WHERE - DESCRIPTION-->
 
 <resources>
+    <string name="generic_yes">Yes</string>
+    <string name="generic_no">No</string>
+
     <string name="app_destination_catalog">Catalog</string>
     <string name="app_destination_capture">Capture</string>
+
+    <string name="app_catalog_dialog_delete_body">Delete?</string>
 </resources>

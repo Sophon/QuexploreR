@@ -1,5 +1,6 @@
 package io.github.sophon.quexplorer.feat.catalog.ui
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,10 +10,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -22,7 +25,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.sophon.quexplorer.feat.catalog.ui.composables.QrItem
 import io.github.sophon.quexplorer.feat.qr.model.QrEntry
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
+import quexplorer.shared.generated.resources.Res
+import quexplorer.shared.generated.resources.app_catalog_dialog_delete_body
+import quexplorer.shared.generated.resources.generic_no
+import quexplorer.shared.generated.resources.generic_yes
 import kotlin.time.Clock
 
 @Composable
@@ -34,7 +42,9 @@ internal fun CatalogScreen(
 
     Content(
         state = state,
-        onDeleteEntry = vm::deleteEntry,
+        onDeleteClick = { vm.onDeleteClick(id = it) },
+        onConfirmDelete = vm::deleteEntry,
+        onDismiss = vm::onDismiss,
         modifier = modifier,
     )
 }
@@ -42,20 +52,34 @@ internal fun CatalogScreen(
 @Composable
 private fun Content(
     state: CatalogState,
-    onDeleteEntry: (Int) -> Unit,
+    onDeleteClick: (String) -> Unit,
+    onConfirmDelete: (String) -> Unit,
+    onDismiss: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    LazyColumn(
+    Box(
         modifier = modifier
-            .fillMaxSize()
+            .fillMaxSize(),
     ) {
-        itemsIndexed(
-            items = state.qrEntryList,
-            key = { _, item -> item.id }
-        ) { index, item ->
-            Item(
-                qrEntry = item,
-                onDelete = { onDeleteEntry(index) }
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize(),
+        ) {
+            itemsIndexed(
+                items = state.qrEntryList,
+                key = { _, item -> item.id },
+            ) { _, item ->
+                Item(
+                    qrEntry = item,
+                    onDelete = { onDeleteClick(item.id) },
+                )
+            }
+        }
+
+        state.deleteConfirmationDialog?.let { dialog ->
+            DeleteDialog(
+                onConfirmDelete = { onConfirmDelete(dialog.id) },
+                onDismiss = onDismiss,
             )
         }
     }
@@ -93,6 +117,31 @@ private fun Item(
     }
 }
 
+@Composable
+private fun DeleteDialog(
+    onConfirmDelete: () -> Unit,
+    onDismiss: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = {
+            Text(text = stringResource(Res.string.app_catalog_dialog_delete_body))
+        },
+        confirmButton = {
+            TextButton(onClick = onConfirmDelete) {
+                Text(text = stringResource(Res.string.generic_yes))
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text(text = stringResource(Res.string.generic_no))
+            }
+        },
+        modifier = modifier,
+    )
+}
+
 //TODO: this should prob be in `util`
 private fun formatRelativeTime(timestamp: Long): String {
     val diff = Clock.System.now().toEpochMilliseconds() - timestamp
@@ -113,7 +162,9 @@ private fun CatalogPreview() {
     MaterialTheme {
         Content(
             state = CatalogState.PREVIEW,
-            onDeleteEntry = {},
+            onDeleteClick = {},
+            onConfirmDelete = {},
+            onDismiss = {},
         )
     }
 }
